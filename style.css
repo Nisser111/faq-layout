@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Raleway&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Raleway:wght@400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --pageBg: #f5f5f5;
+  --mainFontColor: #111111;
+  --borderColor: #c0c0c0;
+  --mainBg: #fefefa;
+}
+
+body {
+  background: var(--pageBg);
+  color: var(--mainFontColor);
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  padding: 8vh 0;
+  font-family: "Playfair Display", serif;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+header hr {
+  width: 40%;
+  height: 2px;
+  background: var(--borderColor);
+  margin: 3vh auto 0 auto;
+}
+
+main {
+  width: clamp(380px, 70vw, 1200px);
+  background: var(--mainBg);
+  margin: 0 3vw 5vh 3vw;
+  padding: 4%;
+}
+
+ul li {
+  list-style: none;
+  min-height: 3rem;
+  padding: 2% 1%;
+  border-bottom: 2px solid var(--borderColor);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  cursor: pointer;
+}
+
+ul li:hover .unfold-btn::after,
+ul li:hover .unfold-btn::before {
+  width: 1.45rem;
+  height: 2px;
+}
+
+ul li:active .unfold-btn::after,
+ul li:active .unfold-btn::before {
+  width: 1.3rem;
+}
+
+ul li:hover .question {
+  opacity: 0.85;
+}
+
+.question {
+  width: 85%;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.unfold-btn {
+  position: relative;
+  width: 15%;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.unfold-btn::after,
+.unfold-btn:before {
+  content: "";
+  position: absolute;
+  width: 1.3rem;
+  height: 1px;
+  background: var(--mainFontColor);
+  border-radius: 2px;
+  transition: 200ms ease-in-out;
+}
+
+.unfold-btn:before {
+  transform: rotate(-90deg);
+}
+
+.unfold-btn:active::after,
+.unfold-btn:active::before {
+  width: 1.3rem;
+}
+
+ul li .unfold-btn.active::before {
+  transform: rotate(0);
+}
+
+ul li .unfold-btn.active + .answer {
+  margin-top: 1.4%;
+}
+
+.answer {
+  width: 85%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 150ms ease;
+}
